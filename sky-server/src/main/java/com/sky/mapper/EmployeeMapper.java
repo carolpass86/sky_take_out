@@ -26,4 +26,15 @@ public interface EmployeeMapper {
 
 
     Page<Employee> pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
+/**
+ *
+
+ */
+    /**
+     *   update employee's info automatically
+
+     * @param employee
+     */
+
+    void update(Employee employee);
 }
