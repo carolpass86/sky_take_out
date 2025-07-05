@@ -85,6 +85,7 @@ public class EmployeeController {
          employeeService.save(employeeDTO);
         return Result.success();
 
+
     }
 @GetMapping("/page")
 @ApiOperation("query employee and Pagination")
@@ -107,6 +108,35 @@ public class EmployeeController {
        log.info("start or stop employee account,{},{}",status,id);
        employeeService.stopOrStart(status,id);
         return Result.success();
+
+    }
+
+    /**
+     * Query employee info by ID
+     * @param id
+     * @return
+     */
+
+    @GetMapping({"/{id}"})
+    @ApiOperation("Query employee info by ID")
+    public Result<Employee> getById(@PathVariable Long id){
+      log.info("Query employee info by ID,{}",id);
+        Employee employee = employeeService.getById(id);
+        return Result.success(employee);
+
+
+    }
+
+    /**
+     * update employee info
+     * @return
+     */
+   @PutMapping
+   @ApiOperation("update employee info")
+    public Result update(@RequestBody EmployeeDTO employeeDTO){
+       log.info("update employee info,{}",employeeDTO);
+       employeeService.update(employeeDTO);
+       return Result.success();
 
     }
 
