@@ -32,7 +32,7 @@ public class EmployeeController {
     private EmployeeService employeeService;
     @Autowired
     private JwtProperties jwtProperties;
-    private String status;
+
 
     /**
      * 登录
