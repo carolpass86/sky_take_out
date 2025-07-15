@@ -4,10 +4,9 @@ import com.github.pagehelper.Page;
 import com.sky.dto.CategoryDTO;
 import com.sky.dto.CategoryPageQueryDTO;
 import com.sky.entity.Category;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
 
 @Mapper
 public interface CategoryMapper {
@@ -39,4 +38,12 @@ public interface CategoryMapper {
      */
 
     void update(Category category);
+
+    /**
+     * query category by type
+     * @param type
+     * @return
+     */
+    @Select("select * from category where type =#{type}")
+    List<Category> list(Integer type);
 }

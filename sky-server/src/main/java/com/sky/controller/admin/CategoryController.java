@@ -2,6 +2,7 @@ package com.sky.controller.admin;
 
 import com.sky.dto.CategoryDTO;
 import com.sky.dto.CategoryPageQueryDTO;
+import com.sky.entity.Category;
 import com.sky.result.PageResult;
 import com.sky.result.Result;
 import com.sky.service.CategoryService;
@@ -11,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 
 @RestController
@@ -67,6 +69,20 @@ public class CategoryController {
       log.info(" update a new category,{}",categoryDTO);
        categoryService.update(categoryDTO);
        return Result.success();
+    }
+
+    @PostMapping("/status/{status}")
+    public Result startOrStop(@PathVariable("status") Integer status,Long id){
+          log.info("status ,id,{},{}",status,id );
+          categoryService.startOrStop(status,id);
+          return  Result.success();
+
+    }
+    @GetMapping("/list")
+    public Result<List<Category>> list(Integer type){
+       List<Category> list =categoryService.list(type);
+        return Result.success(list);
+
     }
 
 

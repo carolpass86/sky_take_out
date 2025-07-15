@@ -86,4 +86,32 @@ public class CategoryServiceImpl implements CategoryService {
 
         categoryMapper.update(category);
     }
+
+    /**
+     * update start or stop
+     * @param status
+     * @param id
+     */
+    @Override
+    public void startOrStop(Integer status, Long id) {
+        Category category = Category.builder()
+                .status(status)
+                .id(id)
+                .updateTime(LocalDateTime.now())
+                .updateUser(BaseContext.getCurrentId())
+                .build();
+
+        categoryMapper.update(category);
+    }
+
+    /**
+     * query category by type
+     * @param type
+     * @return
+     */
+    @Override
+    public List<Category> list(Integer type) {
+       return categoryMapper.list(type);
+
+    }
 }

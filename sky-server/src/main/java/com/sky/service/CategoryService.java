@@ -2,6 +2,7 @@ package com.sky.service;
 
 import com.sky.dto.CategoryDTO;
 import com.sky.dto.CategoryPageQueryDTO;
+import com.sky.entity.Category;
 import com.sky.result.PageResult;
 import org.springframework.stereotype.Service;
 
@@ -33,4 +34,19 @@ public interface CategoryService {
      * @param
      */
     void update(CategoryDTO categoryDTO);
+
+    /**
+     * update start or stop
+     * @param status
+     * @param id
+     */
+    void startOrStop(Integer status, Long id);
+
+    /**
+     * query category by type
+     * @param type
+     * @return
+     */
+
+    List<Category> list(Integer type);
 }
